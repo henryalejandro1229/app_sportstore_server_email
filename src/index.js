@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use('/sportstore_app_backend', require('./routes'));
+app.use('/app_sportstore_backend', require('./routes'));
 
 app.listen(app.get('port'));
 console.log('Server on port', app.get('port'));
