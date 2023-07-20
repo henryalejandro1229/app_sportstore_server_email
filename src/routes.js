@@ -92,10 +92,9 @@ function getCadenaForgotMail(id) {
             <td
               style="padding: 30px 0 20px 0; background: #f89d9b; font-size: 24px; margin: 0 0 20px 0;font-family: Arial, sans-serif; color: #FFF; text-align: center;">
               <h1>
-                <b>Los pajaritos</b><br>
+                <b>Sport store</b><br>
 
               </h1>
-              <h3>Sastrería</h3>
             </td>
           </tr>
           <tr>
@@ -132,7 +131,7 @@ function getCadenaForgotMail(id) {
                           line-height: 24px;
                           font-family: Arial, sans-serif;
                         ">
-                      <a href="http://sastrerialospajaritos.proyectowebuni.com/#/home/reset-password?id=${id}" style="color: #ee4c50; text-decoration: underline">Recuperar mi
+                      <a href="https://sportstore.proyectowebuni.com/#/home/reset-password?id=${id}" style="color: #ee4c50; text-decoration: underline">Recuperar mi
                         contraseña</a>
                     </p>
                     <p style="
@@ -249,10 +248,9 @@ function getCadenaValidateEmail(id) {
               <td
                 style="padding: 30px 0 20px 0; background: #f89d9b; font-size: 24px; margin: 0 0 20px 0;font-family: Arial, sans-serif; color: #FFF; text-align: center;">
                 <h1>
-                  <b>Los pajaritos</b><br>
+                  <b>Sport store</b><br>
   
                 </h1>
-                <h3>Sastrería</h3>
               </td>
             </tr>
             <tr>
@@ -288,7 +286,7 @@ function getCadenaValidateEmail(id) {
                             line-height: 24px;
                             font-family: Arial, sans-serif;
                           ">
-                        <a href="http://sastrerialospajaritos.proyectowebuni.com/#/home/singup-process?id=${id}"  style="color: #ee4c50; text-decoration: underline">Confirmar
+                        <a href="https://sportstore.proyectowebuni.com/#/home/singup-process?id=${id}"  style="color: #ee4c50; text-decoration: underline">Confirmar
                           email</a>
                       </p>
                     </td>
