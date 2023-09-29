@@ -44,8 +44,8 @@ router.post("/send-push-notification", async (req, res) => {
             "vibrate": [100, 50, 100],
             "image": "https://avatars2.githubusercontent.com/u/15802366?s=460&u=ac6cc646599f2ed6c4699a74b15192a29177f85a&v=4",
             "actions": [{
-                "action": "explore",
-                "title": "Go to the site"
+                "action": "http://127.0.0.1:8080/#/home",
+                "title": "Ir a Sport Store"
             }]
         }
     }
