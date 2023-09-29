@@ -1,7 +1,13 @@
 const { Router } = require("express");
+const webpush = require('web-push');
 const router = Router();
 const nodemailer = require("nodemailer");
 const userEmail = "empresa@sastrerialospajaritos.proyectowebuni.com";
+
+const vapidKeys = {
+  "publicKey": "BAN5l7dvIHSrQfUEhwYeFeTUPc5mZ8tR2Xv3H2y7-ytI1vXh2hoGlj19PCVS06-1n4SJ8JW2_RTuMovcm6FO2Q8",
+  "privateKey": "A6Ojd2EiMF5xuUErqNY_yD-jo6t153Za5GhH4d5Jcpc"
+}
 
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
@@ -15,9 +21,46 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+webpush.setVapidDetails(
+  'mailto:example@yourdomain.org',
+  vapidKeys.publicKey,
+  vapidKeys.privateKey
+);
+
 transporter.verify().then(() => {
   console.log("listo para enviar emails");
 });
+
+router.post("/send-push-notification", async (req, res) => {
+  const { token } = req.body;
+    console.log(token);
+
+    const pushSubscription = token;
+
+    const payload = {
+        "notification": {
+            "title": "😄😄 Saludos",
+            "body": "Subscribete a mi canal de YOUTUBE",
+            "vibrate": [100, 50, 100],
+            "image": "https://avatars2.githubusercontent.com/u/15802366?s=460&u=ac6cc646599f2ed6c4699a74b15192a29177f85a&v=4",
+            "actions": [{
+                "action": "explore",
+                "title": "Go to the site"
+            }]
+        }
+    }
+
+    webpush.sendNotification(
+        pushSubscription,
+        JSON.stringify(payload))
+        .then(res => {
+            console.log('Enviado !!');
+        }).catch(err => {
+            console.log('Error', err);
+        })
+
+    res.send({ data: 'Se envio subscribete!!' })
+})
 
 router.get("/", (req, res) => {
   res.send("hello world");
