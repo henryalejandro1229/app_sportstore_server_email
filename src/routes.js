@@ -1,19 +1,17 @@
 const { Router } = require("express");
 const router = Router();
 const nodemailer = require("nodemailer");
-const userEmail = "empresa@sportstore.proyectowebuni.com";
+const userEmail = "empresa@sastrerialospajaritos.proyectowebuni.com";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
   port: 465,
   secure: true, // true for 465, false for other ports
   auth: {
-    user: userEmail,
-    pass: "Sport_St0re",
-    // user: "sastrerialospajaritos@gmail.com",
-    // pass: "qmxptgjawgekmhms",
-    // user: "sastreria.pajaritos@gmail.com",
-    // pass: "nwuamuhuccitmlol",
+    user: userEmail , // generated ethereal user
+    pass: "LosPajaritos/3", // generated ethereal password
+    // user: "sastreria.pajaritos@gmail.com", // generated ethereal user
+    // pass: "nwuamuhuccitmlol", // generated ethereal password
   },
 });
 
@@ -29,7 +27,7 @@ router.post("/send-validate-email", async (req, res) => {
   const { email, id } = req.body;
   try {
     await transporter.sendMail({
-      from: `Sport Store <${userEmail}>`,
+      from: `Sastrería los Pajaritos ${userEmail }`,
       to: email,
       subject: "Comfirma tu cuenta",
       html: getCadenaValidateEmail(id),
@@ -44,7 +42,7 @@ router.post("/send-forgot-password", async (req, res) => {
   const { email, id } = req.body;
   try {
     await transporter.sendMail({
-      from: `Sport Store <${userEmail}>`,
+      from: `Sastrería los Pajaritos ${userEmail }`,
       to: email,
       subject: "Recuperación de contraseña",
       html: getCadenaForgotMail(id),
@@ -92,9 +90,10 @@ function getCadenaForgotMail(id) {
             <td
               style="padding: 30px 0 20px 0; background: #f89d9b; font-size: 24px; margin: 0 0 20px 0;font-family: Arial, sans-serif; color: #FFF; text-align: center;">
               <h1>
-                <b>Sport store</b><br>
+                <b>Los pajaritos</b><br>
 
               </h1>
+              <h3>Sastrería</h3>
             </td>
           </tr>
           <tr>
@@ -131,7 +130,7 @@ function getCadenaForgotMail(id) {
                           line-height: 24px;
                           font-family: Arial, sans-serif;
                         ">
-                      <a href="https://sportstore.proyectowebuni.com/#/home/reset-password?id=${id}" style="color: #ee4c50; text-decoration: underline">Recuperar mi
+                      <a href="http://sastrerialospajaritos.proyectowebuni.com/#/home/reset-password?id=${id}" style="color: #ee4c50; text-decoration: underline">Recuperar mi
                         contraseña</a>
                     </p>
                     <p style="
@@ -248,9 +247,10 @@ function getCadenaValidateEmail(id) {
               <td
                 style="padding: 30px 0 20px 0; background: #f89d9b; font-size: 24px; margin: 0 0 20px 0;font-family: Arial, sans-serif; color: #FFF; text-align: center;">
                 <h1>
-                  <b>Sport store</b><br>
+                  <b>Los pajaritos</b><br>
   
                 </h1>
+                <h3>Sastrería</h3>
               </td>
             </tr>
             <tr>
@@ -286,7 +286,7 @@ function getCadenaValidateEmail(id) {
                             line-height: 24px;
                             font-family: Arial, sans-serif;
                           ">
-                        <a href="https://sportstore.proyectowebuni.com/#/home/singup-process?id=${id}"  style="color: #ee4c50; text-decoration: underline">Confirmar
+                        <a href="http://sastrerialospajaritos.proyectowebuni.com/#/home/singup-process?id=${id}"  style="color: #ee4c50; text-decoration: underline">Confirmar
                           email</a>
                       </p>
                     </td>
