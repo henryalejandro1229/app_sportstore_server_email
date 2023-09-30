@@ -38,17 +38,19 @@ router.post("/send-push-notification", async (req, res) => {
       {
         "name": "abandono_carrito",
         "notification": {
-          "title": "¡Completa tu compra!",
-          "body": "Tu carrito espera",
-          "vibrate": [100, 50, 100],
-          "image":
-            "https://storyset.com/illustration/add-to-cart/cuate#DC3545FF&hide=&hide=complete",
-          "actions": [
-            {
-              "action": "explore",
-              "title": "Ir a mi carrito",
-            },
-          ],
+          "notification": {
+            "title": "¡Completa tu compra!",
+            "body": "Tu carrito espera",
+            "vibrate": [100, 50, 100],
+            "image":
+              "https://storyset.com/illustration/add-to-cart/cuate#DC3545FF&hide=&hide=complete",
+            "actions": [
+              {
+                "action": "explore",
+                "title": "Ir a mi carrito",
+              },
+            ],
+          },
         },
       },
     ];
