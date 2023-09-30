@@ -21,6 +21,25 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const payloads = [
+  {
+    name: "abandono_carrito",
+    notification: {
+      title: "¡Completa tu compra!",
+      body: "Tu carrito espera",
+      vibrate: [100, 50, 100],
+      image:
+        "https://storyset.com/illustration/add-to-cart/cuate#DC3545FF&hide=&hide=complete",
+      actions: [
+        {
+          action: "explore",
+          title: "Ir a mi carrito",
+        },
+      ],
+    },
+  },
+];
+
 webpush.setVapidDetails(
   'mailto:example@yourdomain.org',
   vapidKeys.publicKey,
@@ -32,23 +51,12 @@ transporter.verify().then(() => {
 });
 
 router.post("/send-push-notification", async (req, res) => {
-  const { token } = req.body;
-    console.log(token);
+  const { token, type } = req.body;
 
     const pushSubscription = token;
 
-    const payload = {
-        "notification": {
-            "title": "😄😄 Saludos",
-            "body": "Subscribete a mi canal de YOUTUBE",
-            "vibrate": [100, 50, 100],
-            "image": "https://avatars2.githubusercontent.com/u/15802366?s=460&u=ac6cc646599f2ed6c4699a74b15192a29177f85a&v=4",
-            "actions": [{
-                "action": "http://127.0.0.1:8080/#/home",
-                "title": "Ir a Sport Store"
-            }]
-        }
-    }
+    const payload = payloads.find(payload => payload.name === type).notification;
+    if(!payload) return;
 
     webpush.sendNotification(
         pushSubscription,
