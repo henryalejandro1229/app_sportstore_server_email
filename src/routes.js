@@ -55,14 +55,14 @@ router.post("/send-push-notification", async (req, res) => {
 
     const pushSubscription = token;
 
-    const payload = payloads.find(payload => payload.name === type).notification;
+    const payload = payloads.find(payload => payload.name === type);
     if(!payload) return;
 
     console.log(payload)
 
     webpush.sendNotification(
         pushSubscription,
-        JSON.stringify(payload))
+        JSON.stringify(payload.notification))
         .then(res => {
             console.log('Enviado !!');
         }).catch(err => {
