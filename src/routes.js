@@ -36,17 +36,17 @@ router.post("/send-push-notification", async (req, res) => {
 
     const payloads = [
       {
-        name: "abandono_carrito",
-        notification: {
-          title: "¡Completa tu compra!",
-          body: "Tu carrito espera",
-          vibrate: [100, 50, 100],
-          image:
+        "name": "abandono_carrito",
+        "notification": {
+          "title": "¡Completa tu compra!",
+          "body": "Tu carrito espera",
+          "vibrate": [100, 50, 100],
+          "image":
             "https://storyset.com/illustration/add-to-cart/cuate#DC3545FF&hide=&hide=complete",
-          actions: [
+          "actions": [
             {
-              action: "explore",
-              title: "Ir a mi carrito",
+              "action": "explore",
+              "title": "Ir a mi carrito",
             },
           ],
         },
