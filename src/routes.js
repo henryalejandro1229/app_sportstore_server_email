@@ -43,7 +43,7 @@ router.post("/send-push-notification", async (req, res) => {
             "body": "Tu carrito espera",
             "vibrate": [100, 50, 100],
             "image":
-              "https://storyset.com/illustration/add-to-cart/cuate#DC3545FF&hide=&hide=complete",
+              "https://sportstore.proyectowebuni.com/resources/cart.png",
             "actions": [
               {
                 "action": "explore",
