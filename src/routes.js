@@ -13,12 +13,10 @@ const vapidKeys = {
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
   port: 465,
-  secure: true, // true for 465, false for other ports
+  secure: true,
   auth: {
-    user: userEmail, // generated ethereal user
-    pass: "LosPajaritos/3", // generated ethereal password
-    // user: "sastreria.pajaritos@gmail.com", // generated ethereal user
-    // pass: "nwuamuhuccitmlol", // generated ethereal password
+    user: userEmail,
+    pass: "LosPajaritos/3",
   },
 });
 
@@ -42,16 +40,33 @@ router.post("/send-push-notification", async (req, res) => {
         notification: {
           title: "¡Tu carrito te extraña! 🛒",
           body: "No olvides finalizar tu compra y disfrutar de tus productos favoritos.",
-          // text: "Haz clic para ver más detalles.",
           vibrate: [100, 50, 100],
-          url: "https://sportstore.proyectowebuni.com/#/home/ventas/carrito",
+          url: "https://sportstore.proyectowebuni.com",
           image: "https://sportstore.proyectowebuni.com/resources/cart.png",
-          actions: [
-            {
-              action: "explore",
-              title: "Ir a mi carrito",
-            },
-          ],
+          // actions: [
+          //   {
+          //     action: "explore",
+          //     title: "Ir a mi carrito",
+          //   },
+          // ],
+        },
+      },
+    },
+    {
+      name: "abandono_carrito",
+      notification: {
+        notification: {
+          title: "¡Bienvenido a la familia! 🎉",
+          body: "Gracias por unirte a nosotros. Descubre nuestras novedades y ofertas especiales solo para ti.",
+          vibrate: [100, 50, 100],
+          url: "https://sportstore.proyectowebuni.com",
+          image: "https://sportstore.proyectowebuni.com/resources/cart.png",
+          // actions: [
+          //   {
+          //     action: "explore",
+          //     title: "Ir a mi carrito",
+          //   },
+          // ],
         },
       },
     },
@@ -59,14 +74,8 @@ router.post("/send-push-notification", async (req, res) => {
 
   const pushSubscription = token;
 
-  // const payload = payloads.find((payload) => payload.name === type);
-  // if (!payload) return;
-
-  const payload = JSON.stringify({
-    title: '¡Notificación Importante!',
-    text: 'Haz clic para ver más detalles.',
-    url: 'https://sportstore.proyectowebuni.com', // URL a la que se redireccionará al hacer clic
-  });
+  const payload = payloads.find((payload) => payload.name === type);
+  if (!payload) return;
 
   console.log(payload);
 
