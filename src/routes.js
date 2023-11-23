@@ -53,7 +53,7 @@ router.post("/send-push-notification", async (req, res) => {
       },
     },
     {
-      name: "abandono_carrito",
+      name: "bienvenida",
       notification: {
         notification: {
           title: "¡Bienvenido a la familia! 🎉",
