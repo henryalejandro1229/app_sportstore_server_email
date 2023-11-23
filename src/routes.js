@@ -1,20 +1,21 @@
 const { Router } = require("express");
-const webpush = require('web-push');
+const webpush = require("web-push");
 const router = Router();
 const nodemailer = require("nodemailer");
 const userEmail = "empresa@sastrerialospajaritos.proyectowebuni.com";
 
 const vapidKeys = {
-  "publicKey": "BAN5l7dvIHSrQfUEhwYeFeTUPc5mZ8tR2Xv3H2y7-ytI1vXh2hoGlj19PCVS06-1n4SJ8JW2_RTuMovcm6FO2Q8",
-  "privateKey": "A6Ojd2EiMF5xuUErqNY_yD-jo6t153Za5GhH4d5Jcpc"
-}
+  publicKey:
+    "BAN5l7dvIHSrQfUEhwYeFeTUPc5mZ8tR2Xv3H2y7-ytI1vXh2hoGlj19PCVS06-1n4SJ8JW2_RTuMovcm6FO2Q8",
+  privateKey: "A6Ojd2EiMF5xuUErqNY_yD-jo6t153Za5GhH4d5Jcpc",
+};
 
 const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com",
   port: 465,
   secure: true, // true for 465, false for other ports
   auth: {
-    user: userEmail , // generated ethereal user
+    user: userEmail, // generated ethereal user
     pass: "LosPajaritos/3", // generated ethereal password
     // user: "sastreria.pajaritos@gmail.com", // generated ethereal user
     // pass: "nwuamuhuccitmlol", // generated ethereal password
@@ -22,7 +23,7 @@ const transporter = nodemailer.createTransport({
 });
 
 webpush.setVapidDetails(
-  'mailto:example@yourdomain.org',
+  "mailto:example@yourdomain.org",
   vapidKeys.publicKey,
   vapidKeys.privateKey
 );
@@ -34,45 +35,46 @@ transporter.verify().then(() => {
 router.post("/send-push-notification", async (req, res) => {
   const { token, type } = req.body;
 
-    const payloads = [
-      {
-        "name": "abandono_carrito",
-        "notification": {
-          "notification": {
-            "title": "¡Completa tu compra!",
-            "body": "Tu carrito espera",
-            "vibrate": [100, 50, 100],
-            "image":
-              "https://sportstore.proyectowebuni.com/resources/cart.png",
-            "actions": [
-              {
-                "action": "explore",
-                "title": "Ir a mi carrito",
-              },
-            ],
-          },
+  const payloads = [
+    {
+      name: "abandono_carrito",
+      notification: {
+        notification: {
+          title: "¡Tu carrito te extraña! 🛒",
+          body: "No olvides finalizar tu compra y disfrutar de tus productos favoritos.",
+          text: "Haz clic para ver más detalles.",
+          url: "https://sportstore.proyectowebuni.com/#/home/ventas/carrito",
+          vibrate: [100, 50, 100],
+          image: "https://sportstore.proyectowebuni.com/resources/cart.png",
+          actions: [
+            {
+              action: "explore",
+              title: "Ir a mi carrito",
+            },
+          ],
         },
       },
-    ];
+    },
+  ];
 
-    const pushSubscription = token;
+  const pushSubscription = token;
 
-    const payload = payloads.find(payload => payload.name === type);
-    if(!payload) return;
+  const payload = payloads.find((payload) => payload.name === type);
+  if (!payload) return;
 
-    console.log(payload)
+  console.log(payload);
 
-    webpush.sendNotification(
-        pushSubscription,
-        JSON.stringify(payload.notification))
-        .then(res => {
-            console.log('Enviado !!');
-        }).catch(err => {
-            console.log('Error', err);
-        })
+  webpush
+    .sendNotification(pushSubscription, JSON.stringify(payload.notification))
+    .then((res) => {
+      console.log("Enviado !!");
+    })
+    .catch((err) => {
+      console.log("Error", err);
+    });
 
-    res.send({ data: 'Se envio subscribete!!' })
-})
+  res.send({ data: "Se envio subscribete!!" });
+});
 
 router.get("/", (req, res) => {
   res.send("hello world");
@@ -82,7 +84,7 @@ router.post("/send-validate-email", async (req, res) => {
   const { email, id } = req.body;
   try {
     await transporter.sendMail({
-      from: `Sastrería los Pajaritos ${userEmail }`,
+      from: `Sastrería los Pajaritos ${userEmail}`,
       to: email,
       subject: "Comfirma tu cuenta",
       html: getCadenaValidateEmail(id),
@@ -97,13 +99,15 @@ router.post("/send-forgot-password", async (req, res) => {
   const { email, id } = req.body;
   try {
     await transporter.sendMail({
-      from: `Sastrería los Pajaritos ${userEmail }`,
+      from: `Sastrería los Pajaritos ${userEmail}`,
       to: email,
       subject: "Recuperación de contraseña",
       html: getCadenaForgotMail(id),
     });
   } catch (error) {
-    return res.status(400).json({ message: "Error al enviar email", err : error });
+    return res
+      .status(400)
+      .json({ message: "Error al enviar email", err: error });
   }
   res.status(200).json({});
 });
