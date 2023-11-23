@@ -43,12 +43,12 @@ router.post("/send-push-notification", async (req, res) => {
           vibrate: [100, 50, 100],
           url: "https://sportstore.proyectowebuni.com",
           image: "https://sportstore.proyectowebuni.com/resources/cart.png",
-          // actions: [
-          //   {
-          //     action: "explore",
-          //     title: "Ir a mi carrito",
-          //   },
-          // ],
+          actions: [
+            {
+              action: "explore",
+              title: "Ir a mi carrito",
+            },
+          ],
         },
       },
     },
@@ -61,12 +61,12 @@ router.post("/send-push-notification", async (req, res) => {
           vibrate: [100, 50, 100],
           url: "https://sportstore.proyectowebuni.com",
           image: "https://sportstore.proyectowebuni.com/resources/cart.png",
-          // actions: [
-          //   {
-          //     action: "explore",
-          //     title: "Ir a mi carrito",
-          //   },
-          // ],
+          actions: [
+            {
+              action: "explore",
+              title: "Descubrir productos",
+            },
+          ],
         },
       },
     },
