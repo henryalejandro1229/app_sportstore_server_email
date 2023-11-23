@@ -42,12 +42,12 @@ router.post("/send-push-notification", async (req, res) => {
         notification: {
           title: "¡Tu carrito te extraña! 🛒",
           body: "No olvides finalizar tu compra y disfrutar de tus productos favoritos.",
-          text: "Haz clic para ver más detalles.",
+          // text: "Haz clic para ver más detalles.",
           vibrate: [100, 50, 100],
+          url: "https://sportstore.proyectowebuni.com/#/home/ventas/carrito",
           image: "https://sportstore.proyectowebuni.com/resources/cart.png",
           actions: [
             {
-              url: "https://sportstore.proyectowebuni.com/#/home/ventas/carrito",
               action: "explore",
               title: "Ir a mi carrito",
             },
@@ -59,8 +59,14 @@ router.post("/send-push-notification", async (req, res) => {
 
   const pushSubscription = token;
 
-  const payload = payloads.find((payload) => payload.name === type);
-  if (!payload) return;
+  // const payload = payloads.find((payload) => payload.name === type);
+  // if (!payload) return;
+
+  const payload = JSON.stringify({
+    title: '¡Notificación Importante!',
+    text: 'Haz clic para ver más detalles.',
+    url: 'https://sportstore.proyectowebuni.com', // URL a la que se redireccionará al hacer clic
+  });
 
   console.log(payload);
 
