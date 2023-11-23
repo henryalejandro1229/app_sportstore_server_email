@@ -71,7 +71,7 @@ router.post("/send-push-notification", async (req, res) => {
   console.log(payload);
 
   webpush
-    .sendNotification(pushSubscription, JSON.stringify(payload.notification))
+    .sendNotification(pushSubscription, JSON.stringify(payload))
     .then((res) => {
       console.log("Enviado !!");
     })
