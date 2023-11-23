@@ -204,7 +204,7 @@ function getCadenaForgotMail(id) {
                           line-height: 24px;
                           font-family: Arial, sans-serif;
                         ">
-                      <a href="http://sastrerialospajaritos.proyectowebuni.com/#/home/reset-password?id=${id}" style="color: #ee4c50; text-decoration: underline">Recuperar mi
+                      <a href="https://sportstore.proyectowebuni.com/#/home/reset-password?id=${id}" style="color: #ee4c50; text-decoration: underline">Recuperar mi
                         contraseña</a>
                     </p>
                     <p style="
@@ -360,7 +360,7 @@ function getCadenaValidateEmail(id) {
                             line-height: 24px;
                             font-family: Arial, sans-serif;
                           ">
-                        <a href="http://sastrerialospajaritos.proyectowebuni.com/#/home/singup-process?id=${id}"  style="color: #ee4c50; text-decoration: underline">Confirmar
+                        <a href="https://sportstore.proyectowebuni.com/#/home/singup-process?id=${id}"  style="color: #ee4c50; text-decoration: underline">Confirmar
                           email</a>
                       </p>
                     </td>
