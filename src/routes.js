@@ -60,7 +60,7 @@ router.post("/send-push-notification", async (req, res) => {
           body: "Gracias por unirte a nosotros. Descubre nuestras novedades y ofertas especiales solo para ti.",
           vibrate: [100, 50, 100],
           url: "https://sportstore.proyectowebuni.com",
-          image: "https://sportstore.proyectowebuni.com/resources/cart.png",
+          image: "https://sportstore.proyectowebuni.com/resources/welcome.jpg",
           actions: [
             {
               action: "explore",
