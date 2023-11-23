@@ -43,11 +43,11 @@ router.post("/send-push-notification", async (req, res) => {
           title: "¡Tu carrito te extraña! 🛒",
           body: "No olvides finalizar tu compra y disfrutar de tus productos favoritos.",
           text: "Haz clic para ver más detalles.",
-          url: "https://sportstore.proyectowebuni.com/#/home/ventas/carrito",
           vibrate: [100, 50, 100],
           image: "https://sportstore.proyectowebuni.com/resources/cart.png",
           actions: [
             {
+              url: "https://sportstore.proyectowebuni.com/#/home/ventas/carrito",
               action: "explore",
               title: "Ir a mi carrito",
             },
